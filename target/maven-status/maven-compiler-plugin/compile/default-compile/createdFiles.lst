@@ -1,6 +1,6 @@
+com\mycompany\prueba\service\CartaService.class
+com\mycompany\prueba\util\ConexionBaseDatos.class
 com\mycompany\prueba\service\Repository.class
 com\mycompany\prueba\models\Categoria.class
 com\mycompany\prueba\controllers\IndexController.class
-com\mycompany\prueba\service\CartaService.class
-com\mycompany\prueba\util\ConexionBaseDatos.class
 com\mycompany\prueba\models\Carta.class

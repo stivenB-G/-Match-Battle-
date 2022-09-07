@@ -1,6 +1,8 @@
-
-<%@page contentType="text/html" pageEncoding="UTF-8" 
-  
+<%@page contentType="text/html" pageEncoding="UTF-8"
+import="java.util.*,java.time.format.*,com.mycompany.prueba.models.*"%>
+<%
+List<Carta> cartas = (List<Carta>) request.getAttribute("cartas");
+String titulo=(String) request.getAttribute("titulo");
 %>
 
 
@@ -51,9 +53,8 @@
 
     <nav id="navbar" class="navbar nav-menu">
         <ul>
-        <% for(Carta c: cartas){%>
-                <li value="<%c.getNombre()%></li>
-        <%}%>
+        <p><%=titulo%><p>
+        </ul>
         <li><a href="#hero" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a></li>
         <li><a href="<%=request.getContextPath()%>/partida" class="nav-link scrollto"><i class="bx bx-user"></i> <span>Crea una partida</span></a></li>
         <li><a href="#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Inicia La partida</span></a></li>

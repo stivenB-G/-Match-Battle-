@@ -11,6 +11,7 @@ package com.mycompany.prueba.service;
 import com.mycompany.prueba.models.Carta;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class CartaService implements Repository<Carta>{
@@ -20,40 +21,41 @@ public class CartaService implements Repository<Carta>{
         this.conn = conn;
     }
 
-    @Override
-    public List<Carta> listar() throws SQLException {
-        List<Carta> cartas = new ArrayList<>();
-        try(Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery("select c.car_id,c.car_nombre,c.car_altura,c.car_peso,c.car_fuerza,c.car_velocidad,c.car_ataqueEspecial,c.car_ataqueEspecialDaño,c.car_resistencia,c.car_iq,c.car_img,ca.cat_nombre from carta where c.cat_id=ca.cat_id")){
-            while (rs.next()) {
-                Carta carta = getCarta(rs);
-                cartas.add(carta);
-            }
+//    @Override
+//    public List<Carta> listar() throws SQLException {
+//        List<Carta> cartas = new ArrayList<>();
+//        try(Statement stmt = conn.createStatement();
+//            ResultSet rs = stmt.executeQuery("select *from carta")){
+//            while (rs.next()) {
+//                Carta carta = new Carta();
+//                carta.setId(rs.getInt(1));
+//                carta.setNombre(rs.getString(2));
+//                carta.setAltura(rs.getString(3));
+//                carta.setPeso(rs.getString(4));
+//                carta.setFuerza(rs.getInt(5));
+//                carta.setVelocidad(rs.getInt(6));
+//                carta.setAtaqueEspecial(rs.getString(7));
+//                carta.setAtaqueEspecialDaño(rs.getInt(8));
+//                carta.setResistencia(rs.getInt(9));
+//                carta.setIq(rs.getInt(10));
+//                carta.setImagen(rs.getString(11));
+//                //carta.setCate(rs.getString(12));
+//                cartas.add(carta);
+//            }
+//
+//        }
+        //return cartas;
+                 @Override  
+                public List<Carta> listar() {
+                return Arrays.asList(new Carta(1, "notebook"),new Carta(2, "mesa escritorio"));
+                }
 
-        }
-        return cartas;
-    }
+   
 
    
    
 
-    private Carta getCarta(ResultSet rs) throws SQLException {
-        Carta carta = new Carta();
-        carta.setId(rs.getInt(1));
-        carta.setNombre(rs.getString(2));
-        carta.setAltura(rs.getString(3));
-        carta.setPeso(rs.getString(4));
-        carta.setFuerza(rs.getInt(5));
-        carta.setVelocidad(rs.getInt(6));
-        carta.setAtaqueEspecial(rs.getString(7));
-        carta.setAtaqueEspecialDaño(rs.getInt(8));
-        carta.setResistencia(rs.getInt(9));
-        carta.setIq(rs.getInt(10));
-        carta.setImagen(rs.getString(11));
-        carta.setCate(rs.getString(12));
-        
-        return carta;
-    }
+   
 
     @Override
     public Carta porId(Long id) throws SQLException {
